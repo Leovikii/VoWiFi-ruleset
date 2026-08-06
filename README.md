@@ -8,19 +8,21 @@ The source-format JSON files use rule-set version 2. Binary SRS files are compil
 
 ## Rule sets
 
-| Region | JSON / SRS basename |
-| --- | --- |
-| Americas | `VoW-AM` |
-| Asia | `VoW-AS` |
-| Germany | `VoW-DE` |
-| Europe | `VoW-EU` |
-| Hong Kong | `VoW-HK` |
-| Oceania | `VoW-OC` |
-| United Kingdom | `VoW-UK` |
-| United States | `VoW-US` |
-| All regions | `VoW-ALL` |
+| Region | Basename | JSON | SRS |
+| --- | --- | --- | --- |
+| Americas | `VoW-AM` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-AM.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-AM.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-AM.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-AM.srs) |
+| Asia | `VoW-AS` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-AS.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-AS.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-AS.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-AS.srs) |
+| Germany | `VoW-DE` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-DE.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-DE.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-DE.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-DE.srs) |
+| Europe | `VoW-EU` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-EU.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-EU.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-EU.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-EU.srs) |
+| Hong Kong | `VoW-HK` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-HK.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-HK.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-HK.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-HK.srs) |
+| Oceania | `VoW-OC` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-OC.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-OC.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-OC.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-OC.srs) |
+| United Kingdom | `VoW-UK` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-UK.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-UK.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-UK.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-UK.srs) |
+| United States | `VoW-US` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-US.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-US.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-US.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-US.srs) |
+| All regions | `VoW-ALL` | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/json/VoW-ALL.json) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/json/VoW-ALL.json) | [Original](https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-ALL.srs) · [CDN](https://cdn.jsdelivr.net/gh/Leovikii/VoWiFi-ruleset@main/rulesets/srs/VoW-ALL.srs) |
 
 Files are published under `rulesets/json/` and `rulesets/srs/` with matching basenames.
+
+`Original` links point directly to GitHub Raw. `CDN` links use the third-party jsDelivr mirror, which may provide better access from mainland China but can serve a cached version briefly after an update. Open a link and copy its URL into your client configuration.
 
 ## Usage
 
@@ -34,7 +36,7 @@ Use the binary `VoW-ALL.srs` rule set for all regions:
         "tag": "vowifi",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/<owner>/VoWiFi-ruleset/main/rulesets/srs/VoW-ALL.srs",
+        "url": "https://raw.githubusercontent.com/Leovikii/VoWiFi-ruleset/main/rulesets/srs/VoW-ALL.srs",
         "download_detour": "proxy"
       }
     ],
@@ -48,7 +50,7 @@ Use the binary `VoW-ALL.srs` rule set for all regions:
 }
 ```
 
-Replace `<owner>` with the GitHub account or organization hosting this repository. To use source JSON instead, set `format` to `source` and point the URL to `rulesets/json/VoW-ALL.json`.
+To use source JSON instead, set `format` to `source` and use the corresponding JSON link in the table above.
 
 ## Updates
 
