@@ -1,0 +1,77 @@
+name: Build rule-sets
+
+on:
+  push:
+    paths:
+      - "rulesets/source/**"
+      - "scripts/**"
+      - ".github/workflows/build.yml"
+  pull_request:
+    paths:
+      - "rulesets/source/**"
+      - "rulesets/json/**"
+      - "rulesets/srs/**"
+      - "scripts/**"
+      - ".github/workflows/build.yml"
+  schedule:
+    - cron: "23 19 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ruleset-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SING_BOX_VERSION: "1.13.16"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Synchronize upstream lists
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python3 scripts/sync_upstream.py
+
+      - name: Install sing-box
+        run: |
+          archive="sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz"
+          curl --fail --location --retry 3 \
+            "https://github.com/SagerNet/sing-box/releases/download/v${SING_BOX_VERSION}/${archive}" \
+            --output "${archive}"
+          tar -xzf "${archive}"
+          mkdir -p .bin
+          mv "sing-box-${SING_BOX_VERSION}-linux-amd64/sing-box" .bin/sing-box
+
+      - name: Build JSON and SRS
+        run: python3 scripts/build.py --sing-box .bin/sing-box
+
+      - name: Verify generated artifacts
+        run: python3 scripts/build.py --sing-box .bin/sing-box --check
+
+      - name: Upload generated rule-sets
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoWiFi-rule-sets
+          path: |
+            rulesets/json/*.json
+            rulesets/srs/*.srs
+
+      - name: Commit synchronized sources and generated artifacts
+        if: >-
+          github.event_name != 'pull_request' &&
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        run: |
+          if [[ -z "$(git status --porcelain -- README.md rulesets/source rulesets/json rulesets/srs)" ]]; then
+            echo "No rule-set changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md rulesets/source rulesets/json rulesets/srs
+          git commit -m "chore: update generated VoWiFi rules"
+          git push
