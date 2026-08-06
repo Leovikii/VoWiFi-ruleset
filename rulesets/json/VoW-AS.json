@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "epdg.epc.mnc003.mcc520.pub.3gppnetwork.org",
+        "epdg.epc.mnc012.mcc502.pub.3gppnetwork.org",
+        "epdg.epc.mnc016.mcc502.pub.3gppnetwork.org",
+        "epdg.epc.mnc002.mcc413.pub.3gppnetwork.org"
+      ],
+      "ip_cidr": [
+        "119.31.123.0/24",
+        "119.31.0.0/17"
+      ]
+    }
+  ]
+}

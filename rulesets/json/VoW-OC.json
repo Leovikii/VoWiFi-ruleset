@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "epdg.epc.mnc001.mcc505.pub.3gppnetwork.org",
+        "epdg.epc.mnc002.mcc505.pub.3gppnetwork.org",
+        "epdg.epc.mnc003.mcc505.pub.3gppnetwork.org",
+        "ents.mnc003.mcc505.pub.3gppnetwork.org",
+        "epdg.ims.2degrees.net.nz",
+        "epdg.epc.mnc001.mcc530.pub.3gppnetwork.org",
+        "epdg.epc.mnc005.mcc530.pub.3gppnetwork.spark.co.nz"
+      ],
+      "ip_cidr": [
+        "149.135.0.0/16",
+        "118.148.0.0/15",
+        "203.96.192.0/19"
+      ]
+    }
+  ]
+}

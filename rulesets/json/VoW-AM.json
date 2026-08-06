@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "epdg.epc.mnc050.mcc334.pub.3gppnetwork.org"
+      ]
+    }
+  ]
+}
