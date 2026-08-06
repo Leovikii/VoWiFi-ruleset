@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "wlan.three.com.hk",
+        "wlan.datapath.three.com.hk",
+        "device.three.com.hk",
+        "epdg.epc.mnc000.mcc454.pub.3gppnetwork.org",
+        "ss.epdg.epc.mnc000.mcc454.pub.3gppnetwork.org",
+        "ss.epdg.epc.geo.mnc000.mcc454.pub.3gppnetwork.org",
+        "csl.prod.ondemandconnectivity.com",
+        "hhk.prod.ondemandconnectivity.com"
+      ],
+      "ip_cidr": [
+        "203.145.92.0/32",
+        "203.145.88.0/21",
+        "203.145.80.0/20",
+        "124.217.186.0/32",
+        "124.217.128.0/18",
+        "120.88.224.0/32",
+        "120.88.240.0/32",
+        "4.209.41.0/24"
+      ]
+    }
+  ]
+}
