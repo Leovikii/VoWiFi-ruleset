@@ -9,8 +9,6 @@ on:
   pull_request:
     paths:
       - "rulesets/source/**"
-      - "rulesets/json/**"
-      - "rulesets/srs/**"
       - "scripts/**"
       - ".github/workflows/build.yml"
   schedule:
@@ -31,7 +29,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Validate Python scripts
+        run: python3 -m py_compile scripts/*.py
 
       - name: Synchronize upstream lists
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -54,7 +55,7 @@ jobs:
         run: python3 scripts/build.py --sing-box .bin/sing-box --check
 
       - name: Upload generated rule-sets
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: VoWiFi-rule-sets
           path: |
