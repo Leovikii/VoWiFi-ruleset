@@ -3,13 +3,17 @@ name: Build rule-sets
 on:
   push:
     paths:
+      - ".gitattributes"
       - "rulesets/source/**"
       - "scripts/**"
+      - "tests/**"
       - ".github/workflows/build.yml"
   pull_request:
     paths:
+      - ".gitattributes"
       - "rulesets/source/**"
       - "scripts/**"
+      - "tests/**"
       - ".github/workflows/build.yml"
   schedule:
     - cron: "23 19 1 * *"
@@ -28,11 +32,15 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Validate Python scripts
         run: python3 -m py_compile scripts/*.py
+
+      - name: Test rule conversion
+        run: python3 -m unittest discover -s tests -v
 
       - name: Synchronize upstream lists
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -58,6 +66,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: VoWiFi-rule-sets
+          if-no-files-found: error
           path: |
             rulesets/json/*.json
             rulesets/srs/*.srs

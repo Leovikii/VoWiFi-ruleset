@@ -59,8 +59,19 @@ def parse_list(path: Path) -> dict[str, list[str]]:
             raise RuleError(f"{path}:{line_number}: unsupported rule type {rule_type!r}")
         if len(parts) < 2 or not parts[1]:
             raise RuleError(f"{path}:{line_number}: missing rule value")
-        if len(parts) > 2 and any(option.lower() != "no-resolve" for option in parts[2:] if option):
+        options = {option.lower() for option in parts[2:] if option}
+        allowed_options = {"no-resolve"}
+        # Upstream uses this misspelling on the KPN/SIMYO IP rule.
+        if rule_type in ("IP-CIDR", "IP-CIDR6"):
+            allowed_options.add("re-resolve")
+        if options - allowed_options:
             raise RuleError(f"{path}:{line_number}: unsupported option(s): {parts[2:]}")
+        if "re-resolve" in options:
+            print(
+                f"warning: {path}:{line_number}: ignoring upstream 're-resolve' option; "
+                "DNS resolution options are not stored in sing-box rule-sets",
+                file=sys.stderr,
+            )
 
         field = TYPE_TO_FIELD[rule_type]
         value = parts[1]
@@ -131,15 +142,14 @@ def generate(source_dir: Path, json_dir: Path, srs_dir: Path | None, sing_box: s
     if unknown_stems:
         raise RuleError(f"missing output name mapping for: {', '.join(unknown_stems)}")
 
+    # Validate every source before replacing or removing any existing output.
+    parsed = [parse_list(path) for path in source_paths]
     expected_stems = {OUTPUT_NAMES[path.stem] for path in source_paths} | {ALL_OUTPUT_NAME}
     remove_stale_outputs(json_dir, ".json", expected_stems)
     if sing_box and srs_dir:
         remove_stale_outputs(srs_dir, ".srs", expected_stems)
 
-    parsed: list[dict[str, list[str]]] = []
-    for source_path in source_paths:
-        rules = parse_list(source_path)
-        parsed.append(rules)
+    for source_path, rules in zip(source_paths, parsed):
         write_json(json_dir / f"{OUTPUT_NAMES[source_path.stem]}.json", source_document(rules))
 
     write_json(json_dir / f"{ALL_OUTPUT_NAME}.json", source_document(merge_rules(parsed)))

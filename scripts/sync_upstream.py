@@ -61,8 +61,8 @@ def main() -> int:
         upstream_names = {name for name, _ in files}
         for name, download_url in files:
             content = request(download_url)
-            content.decode("utf-8-sig")
-            (args.destination / name).write_bytes(content)
+            text = content.decode("utf-8-sig").rstrip() + "\n"
+            (args.destination / name).write_text(text, encoding="utf-8", newline="\n")
         for stale_path in args.destination.glob("*.list"):
             if stale_path.name not in upstream_names:
                 stale_path.unlink()

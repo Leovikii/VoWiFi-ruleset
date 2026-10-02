@@ -1,12 +1,16 @@
 # 欧洲其他地区 Wi-Fi Calling 规则
 # 适用于: 荷兰, 芬兰, 冰岛, 立陶宛, 乌克兰
-# 最后更新: 2026-01-05
+# 最后更新: 2026-08-04
 
 # ========== 荷兰 ==========
 
 # Vodafone NL
 DOMAIN-SUFFIX,epdg.epc.mnc004.mcc204.pub.3gppnetwork.org
 IP-CIDR,109.32.0.0/13,no-resolve
+
+#KPN SIMYO
+DOMAIN-SUFFIX,epdg.epc.mnc008.mcc204.pub.3gppnetwork.org
+IP-CIDR,62.133.64.0/18,re-resolve
 
 # ========== 芬兰 ==========
 
