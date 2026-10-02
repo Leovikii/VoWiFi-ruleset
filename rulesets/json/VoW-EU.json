@@ -4,6 +4,7 @@
     {
       "domain_suffix": [
         "epdg.epc.mnc004.mcc204.pub.3gppnetwork.org",
+        "epdg.epc.mnc008.mcc204.pub.3gppnetwork.org",
         "epdg.epc.mnc005.mcc244.pub.3gppnetwork.org",
         "epdg.epc.mnc011.mcc274.pub.3gppnetwork.org",
         "epdg.epc.mnc003.mcc246.pub.3gppnetwork.org",
@@ -11,6 +12,7 @@
       ],
       "ip_cidr": [
         "109.32.0.0/13",
+        "62.133.64.0/18",
         "78.40.249.216/31",
         "212.58.160.0/19",
         "212.58.168.0/21"
